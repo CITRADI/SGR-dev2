@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Administration</h2>
+    <div id="user-list">
+        <h3>User List</h3>
+        <ul>
+            <li>User 1</li>
+            <li>User 2</li>
+            <li>User 3</li>
+            <!-- Aquí se mostrará la lista de usuarios -->
+        </ul>
+    </div>
+    <div id="log-list">
+        <h3>Log List</h3>
+        <ul>
+            <li>Log 1</li>
+            <li>Log 2</li>
+            <li>Log 3</li>
+            <!-- Aquí se mostrará la lista de logs -->
+        </ul>
+    </div>
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+    <script>
+        // Código JavaScript para manejar la página de administración
+
+        // Obtener la lista de usuarios del servidor y mostrarla en la página
+        function getUsers() {
+            // Realizar una solicitud HTTP al backend para obtener la lista de usuarios
+            // Puedes utilizar librerías como Axios para hacer la solicitud
+
+            // Ejemplo de cómo se obtiene la lista de usuarios y se muestra en la página
+            const userListElement = document.getElementById('user-list');
+            const users = ['User 1', 'User 2', 'User 3'];
+
+            // Limpiar la lista de usuarios antes de mostrar los nuevos
+            userListElement.innerHTML = '<h3>User List</h3><ul>';
+
+            users.forEach((user) => {
+                const li = document.createElement('li');
+                li.textContent = user;
+                userListElement.querySelector('ul').appendChild(li);
+            });
+
+            // Código adicional para realizar otras acciones relacionadas con la administración de usuarios
+        }
+
+        // Obtener la lista de logs del servidor y mostrarla en la página
+        function getLogs() {
+            // Realizar una solicitud HTTP al backend para obtener la lista de logs
+            // Puedes utilizar librerías como Axios para hacer la solicitud
+
+            // Ejemplo de cómo se obtiene la lista de logs y se muestra en la página
+            const logListElement = document.getElementById('log-list');
+            const logs = ['Log 1', 'Log 2', 'Log 3'];
+
+            // Limpiar la lista de logs antes de mostrar los nuevos
+            logListElement.innerHTML = '<h3>Log List</h3><ul>';
+
+            logs.forEach((log) => {
+                const li = document.createElement('li');
+                li.textContent = log;
+                logListElement.querySelector('ul').appendChild(li);
+            });
+
+            // Código adicional para realizar otras acciones relacionadas con la administración de logs
+        }
+
+        // Llamar a las funciones para obtener y mostrar la lista de usuarios y logs
+        getUsers();
+        getLogs();
+    </script>
+{% endblock %}

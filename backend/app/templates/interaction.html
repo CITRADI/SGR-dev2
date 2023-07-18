@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Interaction</h2>
+    <div id="chat-container">
+        <div id="chat-messages">
+            <!-- Aquí se mostrarán los mensajes de chat -->
+        </div>
+        <form id="chat-form">
+            <input type="text" id="message-input" placeholder="Type your message...">
+            <button type="submit">Send</button>
+        </form>
+    </div>
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+    <script>
+        // Código JavaScript para manejar la interacción en tiempo real
+        const chatForm = document.getElementById('chat-form');
+        const messageInput = document.getElementById('message-input');
+        const chatMessages = document.getElementById('chat-messages');
+
+        // Evento para enviar el mensaje
+        chatForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const message = messageInput.value;
+
+            // Enviar el mensaje al servidor o realizar alguna acción
+            // Puedes utilizar librerías como Socket.io o hacer una solicitud HTTP al backend para enviar el mensaje
+
+            // Limpiar el campo de entrada de mensajes
+            messageInput.value = '';
+        });
+
+        // Función para mostrar el mensaje en el chat
+        function displayMessage(message) {
+            const messageElement = document.createElement('div');
+            messageElement.innerText = message;
+            chatMessages.appendChild(messageElement);
+        }
+
+        // Ejemplo de cómo recibir mensajes del servidor en tiempo real
+        // Puedes utilizar tecnologías como WebSocket o librerías como Socket.io para establecer la comunicación en tiempo real
+        // Aquí se muestra un ejemplo básico utilizando setTimeout para simular la recepción de mensajes
+        function receiveMessageFromServer() {
+            const message = 'Hello, this is a message from the server!';
+            displayMessage(message);
+        }
+
+        // Llamar a la función para recibir mensajes del servidor cada cierto tiempo
+        setInterval(receiveMessageFromServer, 3000);
+    </script>
+{% endblock %}
