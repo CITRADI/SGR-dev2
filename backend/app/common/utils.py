@@ -6,7 +6,7 @@ def generate_response_from_gpt(input_text):
 
     # Parámetros de la solicitud
     headers = {
-        'Authorization': 'Bearer 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',
+        'Authorization': 'Bearer KEY',
         'Content-Type': 'application/json'
     }
     data = {
